@@ -7334,6 +7334,9 @@
     <Content Include="AdminLTE\bower_components\select2\src\scss\_single.scss" />
     <Content Include="AdminLTE\dist\css\adminlte.css.map" />
     <Content Include="AdminLTE\dist\css\adminlte.min.css.map" />
+    <Content Include="ZClient\1.txt" />
+    <Content Include="ZClient\GTTerminalDLL.dll" />
+    <Content Include="ZClient\接口说明.txt" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\echarts.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

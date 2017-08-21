@@ -23,11 +23,14 @@ namespace CinemaAC
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/echarts.min.js",
-                      "~/AdminLTE/bower_components/Switch/bootstrapSwitch.js"));
+                      "~/AdminLTE/bower_components/Switch/bootstrapSwitch.js",
+                      "~/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
+                      "~/AdminLTE/bower_components/fastclick/lib/fastclick.js",
+                      "~/AdminLTE/dist/js/adminlte.min.js",
+                      "~/AdminLTE/dist/js/demo.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.css"));
 
             bundles.Add(new StyleBundle("~/AdminLTE/css").Include(
                       "~/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css",
