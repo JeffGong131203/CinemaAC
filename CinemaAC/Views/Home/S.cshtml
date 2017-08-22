@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "影厅控制";
+
+    System.Collections.ArrayList arrData = ViewBag.arrData;
+}
+
+<h2>接口数据</h2>
+@foreach (string s in arrData)
+{
+    @s;
+    <br />
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".switch").on('switch-change', function (e, data) {
+
+            alert($(data.el).attr("id"));
+            alert(data.value);
+
+            console.log($(data.el).attr("id"), data.value);
+        });
+    });  
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">影厅空调控制</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body text-center">
+                <div class="row">
+                    @foreach (string s in arrData)
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        <div class="col-md-4">
+                            <div class="info-box" style="width:80%">
+                                <span class="info-box-icon bg-aqua" style="height:210px"><i class="ion ion-ios-gear-outline"></i><h3>@d[0].Substring(0,d[0].IndexOf(":"))</h3></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">回风温度:</span>
+                                    <span class="info-box-number">@d[3]</span>
+                                    <span class="info-box-text">设定温度:</span>
+                                    <div class="input-group" style="width:100%">
+                                        <select id="@d[0].Substring(0,d[0].IndexOf(":"))_SEL" class="form-control text-center" style="max-width:100px">
+                                            @for(int i=16;i<=60;i++)
+                                            {
+                                                if(i == (int)Decimal.Parse(d[4]))
+                                                {
+                                                    <option selected>@((int)Decimal.Parse(d[4]))</option>
+                                                }
+                                                else
+                                                {
+                                                    <option>@i</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <span class="info-box-text">风机状态:</span>
+                                    <div id="@d[0].Substring(0,d[0].IndexOf(":"))_SW1" class="switch" data-on="success" data-off="warning" data-on-label="开" data-off-label="关">
+                                        @if (@d[1] == "开")
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK1" type="checkbox" checked />
+                                        }
+                                        else
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK1" type="checkbox" />
+                                        }                                     
+                                    </div>
+                                    <span class="info-box-text">冷热状态:</span>
+                                    <div id="@d[0].Substring(0,d[0].IndexOf(":"))_SW2" class="switch" data-on="danger" data-off="primary" data-on-label="热" data-off-label="冷">
+                                        @if (@d[0].Substring(d[0].IndexOf(":")+1) == "热")
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK2" type="checkbox" checked />
+                                        }
+                                        else
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK2" type="checkbox" />
+                                        }
+                                    </div>
+                                    <span class="info-box-text">手自状态:</span>
+                                    <div id="@d[0].Substring(0,d[0].IndexOf(":"))_SW3" class="switch" data-on="info" data-off="success" data-on-label="自动" data-off-label="手动">
+                                        @if (@d[2] == "自")
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK3" type="checkbox" checked />
+                                        }
+                                        else
+                                        {
+                                            <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK3" type="checkbox" />
+                                        }
+                                    </div>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
