@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaAC", "CinemaAC\CinemaAC.csproj", "{2A1D4EB8-373E-4CB8-9A46-D1166F3F5A8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAdapter", "ACAdapter\ACAdapter.csproj", "{792812D0-1E6F-46C5-885B-9FD974EE9931}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2A1D4EB8-373E-4CB8-9A46-D1166F3F5A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A1D4EB8-373E-4CB8-9A46-D1166F3F5A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A1D4EB8-373E-4CB8-9A46-D1166F3F5A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
