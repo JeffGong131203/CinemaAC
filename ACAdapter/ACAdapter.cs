@@ -9,8 +9,8 @@ namespace ACAdapter
 {
     public class ACAdapter
     {
-        public string _outFile = string.Empty;
-        public string _ip = string.Empty;
+        private string _outFile = string.Empty;
+        private string _ip = string.Empty;
 
         public ACAdapter(string Ip,string outFile)
         {

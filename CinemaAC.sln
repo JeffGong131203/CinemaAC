@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaAC", "CinemaAC\Cinema
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAdapter", "ACAdapter\ACAdapter.csproj", "{792812D0-1E6F-46C5-885B-9FD974EE9931}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractDataService", "ExtractDataService\ExtractDataService.csproj", "{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792812D0-1E6F-46C5-885B-9FD974EE9931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
