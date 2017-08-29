@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACAdapter", "ACAdapter\ACAd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractDataService", "ExtractDataService\ExtractDataService.csproj", "{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{CA664230-0026-47C5-A2FE-6259ACAB9D91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35CB99F6-0AC1-4926-B8E6-341D336E7AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA664230-0026-47C5-A2FE-6259ACAB9D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA664230-0026-47C5-A2FE-6259ACAB9D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA664230-0026-47C5-A2FE-6259ACAB9D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA664230-0026-47C5-A2FE-6259ACAB9D91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,55 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-using ACAdapter;
-using System.Data.SqlClient;
+using System.Windows.Forms;
 
-namespace ExtractDataService
+namespace TestService
 {
-    public partial class Service1 : ServiceBase
+    public partial class Form1 : Form
     {
         private string filePath = System.AppDomain.CurrentDomain.BaseDirectory + "\\DataFile.txt";
 
-        public Service1()
+        public Form1()
         {
             InitializeComponent();
         }
 
-        protected override void OnStart(string[] args)
+        private void button1_Click(object sender, EventArgs e)
         {
-            WriteLog("Service start...");
+            //GetData();
 
-            System.Timers.Timer t = new System.Timers.Timer();
-            t.Enabled = true;
-            t.Interval = double.Parse(System.Configuration.ConfigurationManager.AppSettings["DataInt"]);
+            InsertDataToDB();
 
-            t.Elapsed += T_Elapsed;
-        }
-
-
-        private void T_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            try
-            {
-                GetData();
-
-                InsertDataToDB();
-            }
-            catch(Exception ex)
-            {
-                WriteLog("Error:" + ex.Message);
-            }
-        }
-
-        protected override void OnStop()
-        {
-            WriteLog("Service stop...");
+            MessageBox.Show("ok");
         }
 
         private void GetData()
@@ -126,7 +103,7 @@ namespace ExtractDataService
                 }
             }
 
-            if(dt.Rows.Count>0)
+            if (dt.Rows.Count > 0)
             {
                 using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["SqlConn"]))
                 {
