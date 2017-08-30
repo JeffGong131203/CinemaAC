@@ -164,7 +164,7 @@ namespace ExtractDataService
 
         private void WriteLog(string logText)
         {
-            using (StreamWriter sw = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now.ToString("YYYYMM") + ".txt", true, Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "\\" + DateTime.Now.ToString("yyyyMM") + ".txt", true, Encoding.Default))
             {
                 sw.WriteLine(DateTime.Now.ToString() + ":" + logText);
             }

@@ -5,12 +5,34 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using ACAdapter;
 
 namespace CinemaAC.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index(string menuID)
+        {
+            if (!string.IsNullOrEmpty(menuID))
+            {
+                ViewBag.DType = menuID;
+            }
+            else
+            {
+                ViewBag.DType = "Err";
+            }
+
+            return View();
+
+            //return Content(clientData);
+        }
+
+        public ActionResult SetState(string switcher,string setValue)
+        {
+            return Cinema("S");
+        }
+
+        public ActionResult Cinema(string menuID)
         {
             if (!string.IsNullOrEmpty(menuID))
             {
@@ -32,15 +54,14 @@ namespace CinemaAC.Controllers
                 }
 
                 ViewBag.arrData = arrS;
+                ViewBag.DType = menuID;
 
                 return View(menuID);
             }
             else
             {
-                return View();
+                return Content("Error MenuID");
             }
-
-            //return Content(clientData);
         }
 
         //public ActionResult About()
@@ -66,7 +87,13 @@ namespace CinemaAC.Controllers
         {
             string strFile = string.Empty;
 
-            string path = Server.MapPath("~/ZClient/1.txt");
+            string path = Server.MapPath("~/ZClient/DataFile.txt");
+
+            string ip = System.Configuration.ConfigurationManager.AppSettings["ip"];
+
+            //GetState Data
+            //ACAdapter.ACAdapter acd = new ACAdapter.ACAdapter(ip, path);
+            //acd.GetState();
 
             //判断是否存在 
             if (System.IO.File.Exists(path))
