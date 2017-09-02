@@ -18,11 +18,11 @@
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="~/AdminLTE/dist/css/skins/_all-skins.min.css">*@
 
-    @Scripts.Render("~/bundles/jquery")
 
     @Styles.Render("~/Content/css")
     @Styles.Render("~/AdminLTE/css")
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/echarts")
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -329,55 +329,55 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="~/CompanyTypes/Index"><i class="fa fa-circle-o text-aqua"></i> <span>能耗监控</span></a></li>
-                            <li><a href="~/StudentTypes/Index"><i class="fa fa-circle-o text-aqua"></i> <span>环境监控</span></a></li>
-                            <li><a href="~/Companies/Index"><i class="fa fa-circle-o text-aqua"></i> <span>影厅控制</span></a></li>
-                            <li><a href="~/Subjects/Index"><i class="fa fa-circle-o text-aqua"></i> <span>大厅控制</span></a></li>
-                            <li><a href="~/Subjects/Index"><i class="fa fa-circle-o text-aqua"></i> <span>灯光控制</span></a></li>
+                            <li><a href="~/Home/ChartsD"><i class="fa fa-circle-o text-aqua"></i> <span>能耗监控</span></a></li>
+                            <li><a href="~/Home/ChartsSH"><i class="fa fa-circle-o text-aqua"></i> <span>环境监控</span></a></li>
+                            <li><a href="~/Home/Cinema?menuID=S"><i class="fa fa-circle-o text-aqua"></i> <span>影厅控制</span></a></li>
+                            <li><a href="~/Home/Cinema?menuID=H"><i class="fa fa-circle-o text-aqua"></i> <span>大厅控制</span></a></li>
+                            <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>灯光控制</span></a></li>
                             @*<li><a href="~/SubjectParameters/Index"><i class="fa fa-circle-o text-aqua"></i> <span>学科系数</span></a></li>
-                            <li><a href="~/GraduateStudentParameters/Index"><i class="fa fa-circle-o text-aqua"></i> <span>研究生定额</span></a></li>
-                            <li><a href="~/Students/Index"><i class="fa fa-circle-o text-aqua"></i> <span>学生数</span></a></li>
-                            <li><a href="~/Manager/Index"><i class="fa fa-circle-o text-aqua"></i> <span>数据测算</span></a></li>
-                            <li><a href="~/StudentNumAdjusts/Index"><i class="fa fa-circle-o text-aqua"></i> <span>调节因素设置</span></a></li>*@
+                                <li><a href="~/GraduateStudentParameters/Index"><i class="fa fa-circle-o text-aqua"></i> <span>研究生定额</span></a></li>
+                                <li><a href="~/Students/Index"><i class="fa fa-circle-o text-aqua"></i> <span>学生数</span></a></li>
+                                <li><a href="~/Manager/Index"><i class="fa fa-circle-o text-aqua"></i> <span>数据测算</span></a></li>
+                                <li><a href="~/StudentNumAdjusts/Index"><i class="fa fa-circle-o text-aqua"></i> <span>调节因素设置</span></a></li>*@
 
                         </ul>
                     </li>
 
                     @*<li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-share"></i> <span>Multilevel</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-circle-o"></i> Level One
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                    <li class="treeview">
-                                        <a href="#">
-                                            <i class="fa fa-circle-o"></i> Level Two
-                                            <span class="pull-right-container">
-                                                <i class="fa fa-angle-left pull-right"></i>
-                                            </span>
-                                        </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                        </ul>
-                    </li>*@
+                            <a href="#">
+                                <i class="fa fa-share"></i> <span>Multilevel</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-circle-o"></i> Level One
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-circle-o"></i> Level Two
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                            </ul>
+                        </li>*@
                 </ul>
             </section>
             <!-- /.sidebar -->

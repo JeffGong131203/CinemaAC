@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "大厅控制";
+
+    System.Collections.ArrayList arrData = ViewBag.arrData;
+
+    string DType = ViewBag.DType;
+
+    string[] fanType = new string[] { "低速", "中速", "高速", "自动" };
+    string[] fanData = new string[] { "低", "中", "高", "自" };
+    string[] sysMode = new string[] { "通风", "加热", "制冷" };
+    string[] sysData = new string[] { "风", "热", "冷" };
+}
+
+@*<h2>接口数据</h2>
+    @foreach (string s in arrData)
+    {
+        @s;
+        <br />
+    }*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".switch").on('switch-change', function (e, data) {
+
+            //alert($(data.el).attr("id"));
+            //alert(data.value);
+
+            var did = $(data.el).attr("id");
+            var setValue = data.value;
+
+            window.location.href = "SetState?switcher=" + did + "&setValue=" + setValue;
+        });
+
+        $(".select2").change(function () {
+            //alert($(this).children('option:selected').val());
+            //alert($(this).attr("id"));
+
+
+            var did = $(this).attr("id");
+            var setValue = $(this).children('option:selected').val();
+
+            window.location.href = "SetState?switcher=" + did + "&setValue=" + setValue;
+
+        })
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">影厅空调控制</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body text-center">
+                <div class="row">
+                    @foreach (string s in arrData)
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        <div class="col-md-4">
+                            <div class="info-box" style="width:80%">
+                                <span class="info-box-icon bg-aqua" style="height:260px"><i class="ion ion-ios-gear-outline"></i><h3>@d[0].Substring(0, d[0].IndexOf(":"))</h3></span>
+                                <div class="info-box-content">
+                                    <div class="input-group" style="width:100%">
+                                        <span class="info-box-text">室温:</span>
+                                        <span class="info-box-number">@d[1]</span>
+                                        <span class="info-box-text">温控开关:</span>
+                                        <div id="@d[0].Substring(0,d[0].IndexOf(":"))_SW1" class="switch" data-on="success" data-off="warning" data-on-label="开" data-off-label="关">
+                                            @if (@d[0].Substring(d[0].IndexOf(":") + 1) == "开")
+                                            {
+                                                <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK" type="checkbox" checked />
+                                            }
+                                            else
+                                            {
+                                                <input id="@d[0].Substring(0,d[0].IndexOf(":"))_CHK" type="checkbox" />
+                                            }
+                                        </div>
+                                        <span class="info-box-text">设定温度:</span>
+
+                                        <select id="@d[0].Substring(0,d[0].IndexOf(":"))_SEL1" class="form-control select2" style="max-width:100px">
+                                            @for (double i = 16; i <= 60; i=i+0.5)
+                                            {
+                                                if (i == Double.Parse(d[2]))
+                                                {
+                                                    <option selected>@i</option>
+                                                }
+                                                else
+                                                {
+                                                    <option>@i</option>
+                                                }
+                                            }
+                                        </select>
+
+                                        <span class="info-box-text">风扇状态:</span>
+                                        <select id="@d[0].Substring(0,d[0].IndexOf(":"))_SEL2" class="form-control select2" style="max-width:100px">
+                                            @for (int i = 0; i <= 3; i++)
+                                            {
+                                                if (fanData[i] == d[3].ToString().Trim())
+                                                {
+                                                    <option selected value="@i">@(fanType[i])</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@i">@(fanType[i])</option>
+                                                }
+                                            }
+                                        </select>
+
+                                        <span class="info-box-text">系统模式:</span>
+                                        <select id="@d[0].Substring(0,d[0].IndexOf(":"))_SEL3" class="form-control select2" style="max-width:100px">
+                                            @for (int i = 0; i <= 2; i++)
+                                            {
+                                                if (sysData[i] == d[4].ToString().Trim())
+                                                {
+                                                    <option selected value="@i">@(sysMode[i])</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@i">@(sysMode[i])</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

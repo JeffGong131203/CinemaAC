@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "能耗监控";
+
+    Dictionary<string, string[]> dicData = ViewBag.dicData;
+    
+}
+
+<div class="row">
+    <div  class="col-md-10">
+<div id="main" style="width:100%;height:400px"></div>
+    </div>
+    <script type="text/javascript">
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var xAxisData = @Html.Raw(@ViewBag.arrayX);
+
+        var data1 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["1"]));
+
+
+        option = {
+            title: {
+                text: '有功功率趋势'
+            },
+            //legend: {
+            //    data: ['bar', 'bar2'],
+            //    align: 'left'
+            //},
+            //toolbox: {
+            //    // y: 'bottom',
+            //    feature: {
+            //        magicType: {
+            //            type: ['stack', 'tiled']
+            //        },
+            //        dataView: {},
+            //        saveAsImage: {
+            //            pixelRatio: 2
+            //        }
+            //    }
+            //},
+            tooltip: {},
+            xAxis: {
+                data: xAxisData,
+                silent: false,
+                splitLine: {
+                    show: false
+                }
+            },
+            yAxis: {
+            },
+            series: [{
+                name: '',
+                type: 'bar',
+                data: data1,
+                animationDelay: function (idx) {
+                    return idx * 10;
+                }
+            }],
+            animationEasing: 'elasticOut',
+            animationDelayUpdate: function (idx) {
+                return idx * 5;
+            }
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</div>
+

@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "霍尼韦尔温度趋势";
+
+    Dictionary<string, string[]> dicData = ViewBag.dicData;
+
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+<div class="row">
+    <div class="col-md-10">
+        <div id="main2" style="width:100%;height:400px"></div>
+    </div>
+    <script type="text/javascript">
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('main2'));
+
+        var xAxisData = @Html.Raw(@ViewBag.arrayX);
+
+        var data1 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["1"]));
+        var data2 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["2"]));
+        var data3 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["3"]));
+        var data4 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["4"]));
+        var data5 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["5"]));
+        var data6 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["6"]));
+        var data7 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["7"]));
+        var data8 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["8"]));
+        var data9 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["9"]));
+        var data10 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["10"]));
+        var data11 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["11"]));
+        var data12 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["12"]));
+        var data13 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["13"]));
+        var data14 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["14"]));
+        var data15 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["15"]));
+        var data16 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["16"]));
+        var data17 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["17"]));
+        var data18 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["18"]));
+        var data19 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["19"]));
+        var data20 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["20"]));
+        var data21 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["21"]));
+        var data22 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["22"]));
+
+
+        option2 = {
+            //title: {
+            //    text: '霍尼韦尔空调温度趋势',
+            //    pading:['50','10']
+            //},
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12', 'H13', 'H14', 'H15', 'H16', 'H17', 'H18', 'H19', 'H20', 'H21', 'H22']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            //toolbox: {
+            //    feature: {
+            //        saveAsImage: {}
+            //    }
+            //},
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxisData
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: 'H1',
+                    type: 'line',
+                    stack: '温度',
+                    data: data1
+                },
+                {
+                    name: 'H2',
+                    type: 'line',
+                    stack: '温度',
+                    data: data2
+                },
+                {
+                    name: 'H3',
+                    type: 'line',
+                    stack: '温度',
+                    data: data3
+                },
+                {
+                    name: 'H4',
+                    type: 'line',
+                    stack: '温度',
+                    data: data4
+                },
+                {
+                    name: 'H5',
+                    type: 'line',
+                    stack: '温度',
+                    data: data5
+                },
+                {
+                    name: 'H6',
+                    type: 'line',
+                    stack: '温度',
+                    data: data6
+                },
+                {
+                    name: 'H7',
+                    type: 'line',
+                    stack: '温度',
+                    data: data7
+                }
+                ,
+                {
+                    name: 'H8',
+                    type: 'line',
+                    stack: '温度',
+                    data: data8
+                },
+                {
+                    name: 'H9',
+                    type: 'line',
+                    stack: '温度',
+                    data: data9
+                },
+                {
+                    name: 'H10',
+                    type: 'line',
+                    stack: '温度',
+                    data: data10
+                },
+                {
+                    name: 'H11',
+                    type: 'line',
+                    stack: '温度',
+                    data: data11
+                },
+                {
+                    name: 'H12',
+                    type: 'line',
+                    stack: '温度',
+                    data: data12
+                },
+                {
+                    name: 'H13',
+                    type: 'line',
+                    stack: '温度',
+                    data: data13
+                }
+                ,
+                {
+                    name: 'H14',
+                    type: 'line',
+                    stack: '温度',
+                    data: data14
+                },
+                {
+                    name: 'H15',
+                    type: 'line',
+                    stack: '温度',
+                    data: data15
+                },
+                {
+                    name: 'H16',
+                    type: 'line',
+                    stack: '温度',
+                    data: data16
+                },
+                {
+                    name: 'H17',
+                    type: 'line',
+                    stack: '温度',
+                    data: data17
+                },
+                {
+                    name: 'H18',
+                    type: 'line',
+                    stack: '温度',
+                    data: data18
+                },
+                {
+                    name: 'H19',
+                    type: 'line',
+                    stack: '温度',
+                    data: data19
+                }
+                ,
+                {
+                    name: 'H20',
+                    type: 'line',
+                    stack: '温度',
+                    data: data20
+                },
+                {
+                    name: 'H21',
+                    type: 'line',
+                    stack: '温度',
+                    data: data21
+                },
+                {
+                    name: 'H22',
+                    type: 'line',
+                    stack: '温度',
+                    data: data22
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+    </script>
+</div>
+
+
+

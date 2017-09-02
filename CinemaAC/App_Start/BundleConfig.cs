@@ -19,10 +19,12 @@ namespace CinemaAC
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/echarts").Include(
+                                      "~/Scripts/echarts.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/echarts.min.js",
                       "~/AdminLTE/bower_components/Switch/bootstrapSwitch.js",
                       "~/AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
                       "~/AdminLTE/bower_components/fastclick/lib/fastclick.js",

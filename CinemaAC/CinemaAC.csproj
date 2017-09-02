@@ -7366,6 +7366,11 @@
     <Content Include="Views\Home\S.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutContent.cshtml" />
+    <Content Include="Views\Home\H.cshtml" />
+    <Content Include="Views\Home\ChartsD.cshtml" />
+    <Content Include="Views\Home\ChartsS.cshtml" />
+    <Content Include="Views\Home\ChartsH.cshtml" />
+    <Content Include="Views\Home\ChartsSH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
