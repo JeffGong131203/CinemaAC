@@ -306,8 +306,8 @@ namespace CinemaAC.Controllers
             string ip = System.Configuration.ConfigurationManager.AppSettings["ip"];
 
             //GetState Data
-            //ACAdapter.ACAdapter acd = new ACAdapter.ACAdapter(ip, path);
-            //acd.GetState();
+            ACAdapter.ACAdapter acd = new ACAdapter.ACAdapter(ip, path);
+            acd.GetState();
 
             //判断是否存在 
             if (System.IO.File.Exists(path))
