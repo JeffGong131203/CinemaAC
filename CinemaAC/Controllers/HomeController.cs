@@ -90,40 +90,103 @@ namespace CinemaAC.Controllers
                     break;
             }
 
-
-            return Cinema(dType);
-        }
-
-        public ActionResult Cinema(string menuID)
-        {
-            if (!string.IsNullOrEmpty(menuID))
+            if(dType == "S")
             {
-                string clientData = GetClinetFile();
-
-                string[] strData = clientData.Split(";".ToCharArray());
-
-                ArrayList arrS = new ArrayList();
-
-                foreach (string s in strData)
-                {
-                    if (!string.IsNullOrEmpty(s))
-                    {
-                        if (s.Substring(0, 1).ToUpper() == menuID.ToUpper())
-                        {
-                            arrS.Add(s);
-                        }
-                    }
-                }
-
-                ViewBag.arrData = arrS;
-                ViewBag.DType = menuID;
-
-                return View(menuID);
+                return S();
+            }
+            else if(dType == "H")
+            {
+                return H();
             }
             else
             {
-                return Content("Error MenuID");
+                return Content("Err");
             }
+
+        }
+
+        //public ActionResult Cinema(string menuID)
+        //{
+        //    if (!string.IsNullOrEmpty(menuID))
+        //    {
+        //        string clientData = GetClinetFile();
+
+        //        string[] strData = clientData.Split(";".ToCharArray());
+
+        //        ArrayList arrS = new ArrayList();
+
+        //        foreach (string s in strData)
+        //        {
+        //            if (!string.IsNullOrEmpty(s))
+        //            {
+        //                if (s.Substring(0, 1).ToUpper() == menuID.ToUpper())
+        //                {
+        //                    arrS.Add(s);
+        //                }
+        //            }
+        //        }
+
+        //        ViewBag.arrData = arrS;
+        //        ViewBag.DType = menuID;
+
+        //        return View(menuID);
+        //    }
+        //    else
+        //    {
+        //        return Content("Error MenuID");
+        //    }
+        //}
+
+        public ActionResult S()
+        {
+            string clientData = GetClinetFile();
+
+            string[] strData = clientData.Split(";".ToCharArray());
+
+            ArrayList arrS = new ArrayList();
+
+            foreach (string s in strData)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s.Substring(0, 1).ToUpper() == "S")
+                    {
+                        arrS.Add(s);
+                    }
+                }
+            }
+
+            ViewBag.arrData = arrS;
+            ViewBag.DType = "S";
+
+            return View();
+
+        }
+
+        public ActionResult H()
+        {
+            string clientData = GetClinetFile();
+
+            string[] strData = clientData.Split(";".ToCharArray());
+
+            ArrayList arrS = new ArrayList();
+
+            foreach (string s in strData)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s.Substring(0, 1).ToUpper() == "H")
+                    {
+                        arrS.Add(s);
+                    }
+                }
+            }
+
+            ViewBag.arrData = arrS;
+            ViewBag.DType = "H";
+
+            return View();
+
         }
 
         public ActionResult ChartsD()
@@ -146,7 +209,7 @@ namespace CinemaAC.Controllers
             DataTable dtDid = dv.ToTable(true, "DID");
 
             string[] arrayX = new string[dtDate.Rows.Count];
-            for(int i=0;i<dtDate.Rows.Count;i++)
+            for (int i = 0; i < dtDate.Rows.Count; i++)
             {
                 arrayX[i] = DateTime.Parse(dtDate.Rows[i][0].ToString()).ToString("yyyy-MM-dd hh:mm:ss");
             }
@@ -154,13 +217,13 @@ namespace CinemaAC.Controllers
 
             Dictionary<string, string[]> dicData = new Dictionary<string, string[]>();
 
-            foreach(DataRow dr in dtDid.Rows)
+            foreach (DataRow dr in dtDid.Rows)
             {
                 string did = Convert.ToString(dr[0]);
 
                 DataRow[] arrDr = dt.Select(string.Format("DID='{0}'", did));
                 string[] arrayD = new string[arrDr.Length];
-                for (int i= 0;i<arrDr.Length;i++)
+                for (int i = 0; i < arrDr.Length; i++)
                 {
                     arrayD[i] = Convert.ToString(arrDr[i]["Col1"]);
                 }

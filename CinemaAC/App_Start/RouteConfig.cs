@@ -15,8 +15,8 @@ namespace CinemaAC
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{menuID}",
-                defaults: new { controller = "Home", action = "Cinema", menuID = "S" }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "S" }
             );
         }
     }
