@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using ACAdapter;
 using System.Data.SqlClient;
 using System.Data;
+using System.Threading;
 
 namespace CinemaAC.Controllers
 {
@@ -90,18 +91,20 @@ namespace CinemaAC.Controllers
                     break;
             }
 
-            if(dType == "S")
+            Thread.Sleep(5000);
+
+            GetClinetFile();
+
+            if (dType == "S")
             {
-                return S();
+                return RedirectToAction("S", "Home");
             }
-            else if(dType == "H")
+            else if (dType == "H")
             {
-                return H();
+                return RedirectToAction("H", "Home");
             }
-            else
-            {
-                return Content("Err");
-            }
+
+            return RedirectToAction("S", "Home");
 
         }
 
@@ -378,6 +381,8 @@ namespace CinemaAC.Controllers
                 //读取text 
                 strFile = System.IO.File.ReadAllText(path, Encoding.GetEncoding("gb2312"));
             }
+
+            //Thread.Sleep(3000);
 
             return strFile;
         }

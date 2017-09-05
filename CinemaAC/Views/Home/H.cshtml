@@ -9,6 +9,8 @@
     string[] fanData = new string[] { "低", "中", "高", "自" };
     string[] sysMode = new string[] { "通风", "加热", "制冷" };
     string[] sysData = new string[] { "风", "热", "冷" };
+
+    string submitUrl = Url.Action("SetState", "Home");
 }
 
 @*<h2>接口数据</h2>
@@ -27,7 +29,7 @@
             var did = $(data.el).attr("id");
             var setValue = data.value;
 
-            window.location.href = "SetState?switcher=" + did + "&setValue=" + setValue;
+            window.location.href = "@submitUrl"+"?switcher=" + did + "&setValue=" + setValue;
         });
 
         $(".select2").change(function () {
@@ -38,7 +40,7 @@
             var did = $(this).attr("id");
             var setValue = $(this).children('option:selected').val();
 
-            window.location.href = "SetState?switcher=" + did + "&setValue=" + setValue;
+            window.location.href = "@submitUrl"+"?switcher=" + did + "&setValue=" + setValue;
 
         })
     });
