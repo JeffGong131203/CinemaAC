@@ -195,6 +195,9 @@ namespace CinemaAC.Controllers
         public ActionResult ChartsD()
         {
             DataTable dt = new DataTable();
+            DataTable dtDay = new DataTable();
+            DataTable dtHour = new DataTable();
+
             using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["SqlConn"]))
             {
                 conn.Open();
@@ -202,6 +205,9 @@ namespace CinemaAC.Controllers
                 string sql = "SELECT top 100 [UpdateTime],[DID],[Col1] FROM [ACCinema].[dbo].[tb_ACData] where dtype='D' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                sql = "select top 10 Convert(varchar(100),[UpdateTime],23) as 'UpdateTime',max(Col2) from [dbo].[tb_ACData] where DType='D' group by Convert(varchar(100),[UpdateTime],23) Order by Convert(varchar(100),[UpdateTime],23) desc";
+
 
                 sda.Fill(dt);
             }
@@ -237,6 +243,27 @@ namespace CinemaAC.Controllers
 
             ViewBag.arrayX = Newtonsoft.Json.JsonConvert.SerializeObject(arrayX);
             ViewBag.dicData = dicData;
+
+            //
+            string clientData = GetClinetFile();
+
+            string[] strData = clientData.Split(";".ToCharArray());
+
+            ArrayList arrS = new ArrayList();
+
+            foreach (string s in strData)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s.Substring(0, 1).ToUpper() == "D")
+                    {
+                        arrS.Add(s);
+                    }
+                }
+            }
+
+            ViewBag.arrData = arrS;
+            ViewBag.DType = "D";
 
             return View();
         }
