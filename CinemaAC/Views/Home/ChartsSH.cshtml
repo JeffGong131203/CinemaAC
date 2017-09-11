@@ -1,14 +1,34 @@
 ﻿
 @{
     ViewBag.Title = "空调温度趋势";
+
+    Dictionary<int, string[]> boxData = ViewBag.boxData;
 }
 
-<h3>施耐德空调温度趋势</h3>
-<div>
-    @Html.Action("ChartsS","Home")
+<div class="row">
+    @for (int i = 0; i < 9; i++)
+    {
+        <div class="col-md-4">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@boxData[i][1]<sup style="font-size: 20px">&#8451;</sup></h3>
+                    <p>@boxData[i][0] 温度</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                @*<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+    }
 </div>
 
-<h3>霍尼韦尔空调温度趋</h3>
+<h3>影厅空调温度趋势</h3>
+<div>
+    @Html.Action("ChartsS", "Home")
+</div>
+
+<h3>大厅空调温度趋</h3>
 <div>
     @Html.Action("ChartsH", "Home")
 </div>

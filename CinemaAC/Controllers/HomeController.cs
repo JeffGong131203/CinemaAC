@@ -205,11 +205,19 @@ namespace CinemaAC.Controllers
                 string sql = "SELECT top 100 [UpdateTime],[DID],[Col1] FROM [ACCinema].[dbo].[tb_ACData] where dtype='D' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
-
-                sql = "select top 10 Convert(varchar(100),[UpdateTime],23) as 'UpdateTime',max(Col2) from [dbo].[tb_ACData] where DType='D' group by Convert(varchar(100),[UpdateTime],23) Order by Convert(varchar(100),[UpdateTime],23) desc";
-
-
                 sda.Fill(dt);
+
+                sql = "select top 10 Convert(varchar(100),[UpdateTime],23) as 'UpdateTime',max(Col2) as 'Col2' from [dbo].[tb_ACData] where DType='D' group by Convert(varchar(100),[UpdateTime],23) Order by Convert(varchar(100),[UpdateTime],23) desc";
+                cmd = new SqlCommand(sql, conn);
+                sda = new SqlDataAdapter(cmd);
+                sda.Fill(dtDay);
+
+                sql = "select top 100 Convert(varchar(13),[UpdateTime],120) as 'UpdateTime',max(Col2) as 'Col2' from [dbo].[tb_ACData] where DType='D' group by Convert(varchar(13),[UpdateTime],120) Order by Convert(varchar(13),[UpdateTime],120) desc";
+                cmd = new SqlCommand(sql, conn);
+                sda = new SqlDataAdapter(cmd);
+                sda.Fill(dtHour);
+
+
             }
 
             //ViewBag.dData = dt;
@@ -244,7 +252,42 @@ namespace CinemaAC.Controllers
             ViewBag.arrayX = Newtonsoft.Json.JsonConvert.SerializeObject(arrayX);
             ViewBag.dicData = dicData;
 
-            //
+            //Day Value
+            string[] arrayXDay = new string[dtDay.Rows.Count-1];
+            string[] arrayDayValue = new string[dtDay.Rows.Count-1];
+            if (dtDay.Rows.Count > 1)
+            {
+                for (int i = 1; i < dtDay.Rows.Count; i++)
+                {
+                    arrayXDay[i-1] = Convert.ToString(dtDay.Rows[i][0]);
+                    arrayDayValue[i-1] = Convert.ToString(Convert.ToDecimal(dtDay.Rows[i - 1][1]) - Convert.ToDecimal(dtDay.Rows[i][1]));
+                }                     
+
+                Array.Reverse(arrayXDay);
+                Array.Reverse(arrayDayValue);
+            }
+
+            ViewBag.arrayXDay = Newtonsoft.Json.JsonConvert.SerializeObject(arrayXDay);
+            ViewBag.arrayDayValue = Newtonsoft.Json.JsonConvert.SerializeObject(arrayDayValue);
+
+            //Hour Value
+            string[] arrayXHour = new string[dtHour.Rows.Count-1];
+            string[] arrayHourValue = new string[dtHour.Rows.Count-1];
+            if (dtHour.Rows.Count > 1)
+            {
+                for (int i = 1; i < dtHour.Rows.Count; i++)
+                {
+                    arrayXHour[i-1] = Convert.ToString(dtHour.Rows[i][0]);
+                    arrayHourValue[i-1] = Convert.ToString(Convert.ToDecimal(dtHour.Rows[i - 1][1]) - Convert.ToDecimal(dtHour.Rows[i][1]));
+                }
+                Array.Reverse(arrayXHour);
+                Array.Reverse(arrayHourValue);
+            }
+
+            ViewBag.arrayXHour = Newtonsoft.Json.JsonConvert.SerializeObject(arrayXHour);
+            ViewBag.arrayHourValue = Newtonsoft.Json.JsonConvert.SerializeObject(arrayHourValue);
+
+            //Get Interface File
             string clientData = GetClinetFile();
 
             string[] strData = clientData.Split(";".ToCharArray());
@@ -262,7 +305,10 @@ namespace CinemaAC.Controllers
                 }
             }
 
-            ViewBag.arrData = arrS;
+            string cv = arrS[0].ToString().Split(",".ToCharArray())[0];
+
+
+            ViewBag.arrData = cv.Substring(cv.IndexOf(":") + 1);
             ViewBag.DType = "D";
 
             return View();
@@ -324,7 +370,7 @@ namespace CinemaAC.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT top 100 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' order by [UpdateTime] desc,[DID]";
+                string sql = "SELECT top 100 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' and Convert(int,[DID])>'16' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
@@ -368,6 +414,51 @@ namespace CinemaAC.Controllers
 
         public ActionResult ChartsSH()
         {
+            //Get Interface File
+            string clientData = GetClinetFile();
+
+            string[] strData = clientData.Split(";".ToCharArray());
+
+            Dictionary<int, string[]> dicData = new Dictionary<int, string[]>();
+            int i = 0;
+
+            foreach (string s in strData)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s.Substring(0, 1).ToUpper() == "S")
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        dicData.Add(i, new string[] { d[0].Substring(0, d[0].IndexOf(":")), d[3] });
+
+                        i++;
+                    }
+
+                    if (s.Substring(0, 3).ToUpper() == "H18")
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        dicData.Add(i, new string[] { "大堂", d[1] });
+
+                        i++;
+                    }
+
+                    if (s.Substring(0, 3).ToUpper() == "H19")
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        dicData.Add(i, new string[] { "办公室", d[1] });
+
+                        i++;
+                    }
+                }
+
+                
+            }
+
+            ViewBag.boxData = dicData;
+
             return View();
         }
 

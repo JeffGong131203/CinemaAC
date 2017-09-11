@@ -17,7 +17,7 @@
 
         var xAxisData = @Html.Raw(@ViewBag.arrayX);
 
-        var data1 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["1"]));
+        @*var data1 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["1"]));
         var data2 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["2"]));
         var data3 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["3"]));
         var data4 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["4"]));
@@ -32,7 +32,7 @@
         var data13 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["13"]));
         var data14 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["14"]));
         var data15 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["15"]));
-        var data16 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["16"]));
+        var data16 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["16"]));*@
         var data17 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["17"]));
         var data18 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["18"]));
         var data19 = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(dicData["19"]));
@@ -50,7 +50,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12', 'H13', 'H14', 'H15', 'H16', 'H17', 'H18', 'H19', 'H20', 'H21', 'H22']
+                data: ['H17', 'H18', 'H19', 'H20', 'H21', 'H22']
             },
             grid: {
                 left: '3%',
@@ -69,107 +69,108 @@
                 data: xAxisData
             },
             yAxis: {
-                type: 'value'
+                type: 'value',
+                max:50
             },
             series: [
-                {
-                    name: 'H1',
-                    type: 'line',
-                    stack: '温度',
-                    data: data1
-                },
-                {
-                    name: 'H2',
-                    type: 'line',
-                    stack: '温度',
-                    data: data2
-                },
-                {
-                    name: 'H3',
-                    type: 'line',
-                    stack: '温度',
-                    data: data3
-                },
-                {
-                    name: 'H4',
-                    type: 'line',
-                    stack: '温度',
-                    data: data4
-                },
-                {
-                    name: 'H5',
-                    type: 'line',
-                    stack: '温度',
-                    data: data5
-                },
-                {
-                    name: 'H6',
-                    type: 'line',
-                    stack: '温度',
-                    data: data6
-                },
-                {
-                    name: 'H7',
-                    type: 'line',
-                    stack: '温度',
-                    data: data7
-                }
-                ,
-                {
-                    name: 'H8',
-                    type: 'line',
-                    stack: '温度',
-                    data: data8
-                },
-                {
-                    name: 'H9',
-                    type: 'line',
-                    stack: '温度',
-                    data: data9
-                },
-                {
-                    name: 'H10',
-                    type: 'line',
-                    stack: '温度',
-                    data: data10
-                },
-                {
-                    name: 'H11',
-                    type: 'line',
-                    stack: '温度',
-                    data: data11
-                },
-                {
-                    name: 'H12',
-                    type: 'line',
-                    stack: '温度',
-                    data: data12
-                },
-                {
-                    name: 'H13',
-                    type: 'line',
-                    stack: '温度',
-                    data: data13
-                }
-                ,
-                {
-                    name: 'H14',
-                    type: 'line',
-                    stack: '温度',
-                    data: data14
-                },
-                {
-                    name: 'H15',
-                    type: 'line',
-                    stack: '温度',
-                    data: data15
-                },
-                {
-                    name: 'H16',
-                    type: 'line',
-                    stack: '温度',
-                    data: data16
-                },
+                //{
+                //    name: 'H1',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data1
+                //},
+                //{
+                //    name: 'H2',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data2
+                //},
+                //{
+                //    name: 'H3',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data3
+                //},
+                //{
+                //    name: 'H4',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data4
+                //},
+                //{
+                //    name: 'H5',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data5
+                //},
+                //{
+                //    name: 'H6',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data6
+                //},
+                //{
+                //    name: 'H7',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data7
+                //}
+                //,
+                //{
+                //    name: 'H8',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data8
+                //},
+                //{
+                //    name: 'H9',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data9
+                //},
+                //{
+                //    name: 'H10',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data10
+                //},
+                //{
+                //    name: 'H11',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data11
+                //},
+                //{
+                //    name: 'H12',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data12
+                //},
+                //{
+                //    name: 'H13',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data13
+                //}
+                //,
+                //{
+                //    name: 'H14',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data14
+                //},
+                //{
+                //    name: 'H15',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data15
+                //},
+                //{
+                //    name: 'H16',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data16
+                //},
                 {
                     name: 'H17',
                     type: 'line',
