@@ -4,14 +4,30 @@
 
     Dictionary<string, string[]> dicData = ViewBag.dicData;
 
+    string cvStr = ViewBag.arrData[0].ToString();
+
+    string tv = cvStr.Split(",".ToCharArray())[1];
+    string cv = cvStr.Split(",".ToCharArray())[0].Split(":".ToCharArray())[1];
 }
 
 <div class="row">
     <div class="col-md-4">
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>@ViewBag.arrData<sup style="font-size: 20px">KW</sup></h3>
+                <h3>@cv<sup style="font-size: 20px">KW</sup></h3>
                 <p>当前功率</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            @*<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>@tv<sup style="font-size: 20px">KWh</sup></h3>
+                <p>总用电量</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -70,7 +86,7 @@
             },
             series: [{
                 name: '',
-                type: 'bar',
+                type: 'line',
                 data: data1,
                 animationDelay: function (idx) {
                     return idx * 10;
@@ -122,7 +138,7 @@
             series: [
                 {
                     name: '',
-                    type: 'line',
+                    type: 'bar',
                     stack: '',
                     data: dataDay
                 }
@@ -168,7 +184,7 @@
             series: [
                 {
                     name: '',
-                    type: 'line',
+                    type: 'bar',
                     stack: '',
                     data: dataHour
                 }

@@ -305,10 +305,10 @@ namespace CinemaAC.Controllers
                 }
             }
 
-            string cv = arrS[0].ToString().Split(",".ToCharArray())[0];
+            //string cv = arrS[0].ToString().Split(",".ToCharArray())[0];
 
 
-            ViewBag.arrData = cv.Substring(cv.IndexOf(":") + 1);
+            ViewBag.arrData = arrS;
             ViewBag.DType = "D";
 
             return View();
@@ -370,7 +370,7 @@ namespace CinemaAC.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT top 100 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' and Convert(int,[DID])>'16' order by [UpdateTime] desc,[DID]";
+                string sql = "SELECT top 100 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
@@ -426,11 +426,20 @@ namespace CinemaAC.Controllers
             {
                 if (!string.IsNullOrEmpty(s))
                 {
-                    if (s.Substring(0, 1).ToUpper() == "S")
+                    if (s.Substring(0, 2).ToUpper() == "S4" || s.Substring(0, 2).ToUpper() == "S5" || s.Substring(0, 2).ToUpper() == "S6")
                     {
                         string[] d = s.Split(",".ToCharArray());
 
                         dicData.Add(i, new string[] { d[0].Substring(0, d[0].IndexOf(":")), d[3] });
+
+                        i++;
+                    }
+
+                    if (s.Substring(0, 3).ToUpper() == "H16" || s.Substring(0, 3).ToUpper() == "H17" || s.Substring(0, 3).ToUpper() == "H20" || s.Substring(0, 3).ToUpper() == "H21")
+                    {
+                        string[] d = s.Split(",".ToCharArray());
+
+                        dicData.Add(i, new string[] { d[0].Substring(0, d[0].IndexOf(":")), d[1] });
 
                         i++;
                     }

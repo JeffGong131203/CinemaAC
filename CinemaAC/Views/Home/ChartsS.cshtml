@@ -34,7 +34,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data: ['S1', 'S2', 'S3', 'S4', 'S5','S6','S7']
+                data: ['S2', 'S3', 'S4', 'S5','S6','S7']
             },
             grid: {
                 left: '3%',
@@ -54,49 +54,46 @@
             },
             yAxis: {
                 type: 'value',
-                max:50
+                name: '°C',
+                axisLabel: {
+                    formatter: '{value} °C'
+                }
             },
             series: [
-                {
-                    name: 'S1',
-                    type: 'line',
-                    stack: '温度',
-                    data: data1
-                },
+                //{
+                //    name: 'S1',
+                //    type: 'line',
+                //    stack: '温度',
+                //    data: data1
+                //},
                 {
                     name: 'S2',
                     type: 'line',
-                    stack: '温度',
                     data: data2
                 },
                 {
                     name: 'S3',
                     type: 'line',
-                    stack: '温度',
                     data: data3
                 },
                 {
                     name: 'S4',
                     type: 'line',
-                    stack: '温度',
                     data: data4
                 },
                 {
                     name: 'S5',
                     type: 'line',
-                    stack: '温度',
                     data: data5
                 },
                 {
                     name: 'S6',
                     type: 'line',
-                    stack: '温度',
                     data: data6
                 },
                 {
                     name: 'S7',
                     type: 'line',
-                    stack: '温度',
                     data: data7
                 }
             ]
