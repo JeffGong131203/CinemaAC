@@ -202,7 +202,7 @@ namespace CinemaAC.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT top 100 [UpdateTime],[DID],[Col1] FROM [ACCinema].[dbo].[tb_ACData] where dtype='D' order by [UpdateTime] desc,[DID]";
+                string sql = "SELECT top 1440 [UpdateTime],[DID],[Col1] FROM [ACCinema].[dbo].[tb_ACData] where dtype='D' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 sda.Fill(dt);
@@ -321,7 +321,7 @@ namespace CinemaAC.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT top 100 [UpdateTime],[DID],[Col4] FROM [ACCinema].[dbo].[tb_ACData] where dtype='S' order by [UpdateTime] desc,[DID]";
+                string sql = "SELECT top 1440 [UpdateTime],[DID],[Col4] FROM [ACCinema].[dbo].[tb_ACData] where dtype='S' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
@@ -370,7 +370,7 @@ namespace CinemaAC.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT top 100 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' order by [UpdateTime] desc,[DID]";
+                string sql = "SELECT top 1440 [UpdateTime],[DID],[Col2] FROM [ACCinema].[dbo].[tb_ACData] where dtype='H' order by [UpdateTime] desc,[DID]";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
 
