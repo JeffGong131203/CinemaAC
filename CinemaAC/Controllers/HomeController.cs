@@ -259,7 +259,7 @@ namespace CinemaAC.Controllers
             {
                 for (int i = 1; i < dtDay.Rows.Count; i++)
                 {
-                    arrayXDay[i-1] = Convert.ToString(dtDay.Rows[i][0]);
+                    arrayXDay[i-1] = Convert.ToString(dtDay.Rows[i-1][0]);
                     arrayDayValue[i-1] = Convert.ToString(Convert.ToDecimal(dtDay.Rows[i - 1][1]) - Convert.ToDecimal(dtDay.Rows[i][1]));
                 }                     
 
@@ -277,7 +277,7 @@ namespace CinemaAC.Controllers
             {
                 for (int i = 1; i < dtHour.Rows.Count; i++)
                 {
-                    arrayXHour[i-1] = Convert.ToString(dtHour.Rows[i][0]);
+                    arrayXHour[i-1] = Convert.ToString(dtHour.Rows[i-1][0]);
                     arrayHourValue[i-1] = Convert.ToString(Convert.ToDecimal(dtHour.Rows[i - 1][1]) - Convert.ToDecimal(dtHour.Rows[i][1]));
                 }
                 Array.Reverse(arrayXHour);
