@@ -44,6 +44,12 @@
     <div class="col-md-10">
         <div id="chartsHour" style="width:100%;height:400px"></div>
     </div>
+    <div class="col-md-10">
+        <div id="chartsMonth" style="width:100%;height:400px"></div>
+    </div>
+    <div class="col-md-10">
+        <div id="chartsQuarter" style="width:100%;height:400px"></div>
+    </div>
     <script type="text/javascript">
 
         // 基于准备好的dom，初始化echarts实例
@@ -192,6 +198,98 @@
         };
         // 使用刚指定的配置项和数据显示图表。
         myChartHour.setOption(optionHour);
+
+
+        //Month Line
+        var myChartMonth = echarts.init(document.getElementById('chartsMonth'));
+
+        var xAxisDataMonth = @Html.Raw(@ViewBag.arrayXMonth);
+
+        var dataMonth = @Html.Raw(ViewBag.arrayMonthValue);
+
+        optionMonth = {
+            title: {
+                text: '月用电量'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            //toolbox: {
+            //    feature: {
+            //        saveAsImage: {}
+            //    }
+            //},
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxisDataMonth
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '',
+                    data: dataMonth
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChartMonth.setOption(optionMonth);
+
+
+        //Quarter Line
+        var myChartQuarter = echarts.init(document.getElementById('chartsQuarter'));
+
+        var xAxisDataQuarter = @Html.Raw(@ViewBag.arrayXQuarter);
+
+        var dataQuarter = @Html.Raw(ViewBag.arrayQuarterValue);
+
+        optionQuarter = {
+            title: {
+                text: '季度用电量'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            //toolbox: {
+            //    feature: {
+            //        saveAsImage: {}
+            //    }
+            //},
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xAxisDataQuarter
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '',
+                    type: 'bar',
+                    stack: '',
+                    data: dataQuarter
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChartQuarter.setOption(optionQuarter);
     </script>
 </div>
 

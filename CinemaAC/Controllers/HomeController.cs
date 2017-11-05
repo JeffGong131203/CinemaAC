@@ -198,6 +198,9 @@ namespace CinemaAC.Controllers
             DataTable dtDay = new DataTable();
             DataTable dtHour = new DataTable();
 
+            DataTable dtMonth = new DataTable();
+            DataTable dtQtr = new DataTable();
+
             using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["SqlConn"]))
             {
                 conn.Open();
@@ -217,7 +220,15 @@ namespace CinemaAC.Controllers
                 sda = new SqlDataAdapter(cmd);
                 sda.Fill(dtHour);
 
+                sql = "select MONTH([UpdateTime]) as 'UpdateTime',max(Col2) as 'Col2' from [dbo].[tb_ACData] where DType='D' and Year([UpdateTime]) = Year(Getdate()) group by MONTH([UpdateTime]) order by MONTH([UpdateTime]) desc";
+                cmd = new SqlCommand(sql, conn);
+                sda = new SqlDataAdapter(cmd);
+                sda.Fill(dtMonth);
 
+                sql = "select datepart(quarter,[UpdateTime]) as 'UpdateTime',max(Col2) as 'Col2' from [dbo].[tb_ACData] where DType='D' and Year([UpdateTime]) = Year(Getdate()) group by datepart(quarter,[UpdateTime]) order by datepart(quarter,[UpdateTime]) desc";
+                cmd = new SqlCommand(sql, conn);
+                sda = new SqlDataAdapter(cmd);
+                sda.Fill(dtQtr);
             }
 
             //ViewBag.dData = dt;
@@ -286,6 +297,40 @@ namespace CinemaAC.Controllers
 
             ViewBag.arrayXHour = Newtonsoft.Json.JsonConvert.SerializeObject(arrayXHour);
             ViewBag.arrayHourValue = Newtonsoft.Json.JsonConvert.SerializeObject(arrayHourValue);
+
+            //Month Value
+            string[] arrayXMonth = new string[dtMonth.Rows.Count - 1];
+            string[] arrayMonthValue = new string[dtMonth.Rows.Count - 1];
+            if (dtMonth.Rows.Count > 1)
+            {
+                for (int i = 1; i < dtMonth.Rows.Count; i++)
+                {
+                    arrayXMonth[i - 1] = Convert.ToString(dtMonth.Rows[i - 1][0]);
+                    arrayMonthValue[i - 1] = Convert.ToString(Convert.ToDecimal(dtMonth.Rows[i - 1][1]) - Convert.ToDecimal(dtMonth.Rows[i][1]));
+                }
+                Array.Reverse(arrayXMonth);
+                Array.Reverse(arrayMonthValue);
+            }
+
+            ViewBag.arrayXMonth = Newtonsoft.Json.JsonConvert.SerializeObject(arrayXMonth);
+            ViewBag.arrayMonthValue = Newtonsoft.Json.JsonConvert.SerializeObject(arrayMonthValue);
+
+            //Quarter Value
+            string[] arrayXQuarter = new string[dtQtr.Rows.Count - 1];
+            string[] arrayQuarterValue = new string[dtQtr.Rows.Count - 1];
+            if (dtQtr.Rows.Count > 1)
+            {
+                for (int i = 1; i < dtQtr.Rows.Count; i++)
+                {
+                    arrayXQuarter[i - 1] = Convert.ToString(dtQtr.Rows[i - 1][0]);
+                    arrayQuarterValue[i - 1] = Convert.ToString(Convert.ToDecimal(dtQtr.Rows[i - 1][1]) - Convert.ToDecimal(dtQtr.Rows[i][1]));
+                }
+                Array.Reverse(arrayXQuarter);
+                Array.Reverse(arrayQuarterValue);
+            }
+
+            ViewBag.arrayXQuarter = Newtonsoft.Json.JsonConvert.SerializeObject(arrayXQuarter);
+            ViewBag.arrayQuarterValue = Newtonsoft.Json.JsonConvert.SerializeObject(arrayQuarterValue);
 
             //Get Interface File
             string clientData = GetClinetFile();
